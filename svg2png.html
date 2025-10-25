@@ -82,6 +82,8 @@ html, body {
 
 <title>SVG to PNG Converter</title>
 
+<body onload="onImageLoaded()">
+
 <div style="display: flex; height: 100vh; width: 100%;">
 	<div style="padding: 1rem 0.5rem 1rem 1rem; overflow: auto; min-width: 30%">
 		<div>
@@ -111,7 +113,7 @@ html, body {
 				<option>64</option>
 			</select>
 			|
-			<span id="dimensions" title="The size of the rasterized image in pixels after oversampling/scaling.">0 × 0</span>
+			<span id="dimensions" title="The size of the rasterized image in pixels after oversampling/scaling."></span>
 			|
 			<a id="download" class="hide-no-link" download>Save PNG</a>
 		</div>
@@ -123,3 +125,5 @@ html, body {
 		</div>
 	</div>
 </div>
+
+</body>
