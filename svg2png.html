@@ -76,6 +76,8 @@ html, body {
 	block-size: 100%;
 }
 
+.hide-no-link:not(:link) { visibility: hidden; }
+
 </style>
 
 <title>SVG to PNG Converter</title>
@@ -95,7 +97,7 @@ html, body {
 		</div>
 	
 		<div style="padding-top: 0.25rem">
-			<label for="oversample">pixel oversample</label>
+			<label for="oversample">pixel oversample:</label>
 			<select oninput="onImageLoaded()" id="oversample" title="Scale the natural dimensions of the image by this much when rasterizing.">
 				<option>0.125</option>
 				<option>0.25</option>
@@ -111,7 +113,7 @@ html, body {
 			|
 			<span id="dimensions" title="The size of the rasterized image in pixels after oversampling/scaling.">0 × 0</span>
 			|
-			<a id="download" download>Save PNG</a>
+			<a id="download" class="hide-no-link" download>Save PNG</a>
 		</div>
 	</div>
 
