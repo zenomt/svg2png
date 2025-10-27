@@ -98,8 +98,8 @@ html, body {
 			title="Drop or paste SVG XML or an image URL in this box."
 			autocorrect="false"
 			spellcheck="false"
-			draggable="true"
 			ondrop="onDrop(event)"
+			ondragover="event.preventDefault()"
 			oninput="onText()"></textarea>
 	
 		<div style="padding-top: 0.25rem;">
