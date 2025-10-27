@@ -74,6 +74,7 @@ html, body {
 	height: 100%;
 	margin: 0;
 	block-size: 100%;
+	font-family: Avenir Next, Arial, Helvetica, sans-serif, system-ui;
 }
 
 .hide-no-link:not(:link) { visibility: hidden; }
@@ -82,28 +83,26 @@ html, body {
 
 <title>SVG to PNG Converter</title>
 
-<body onload="onImageLoaded()">
+<body onload="onText()">
 
 <div style="display: flex; height: 100vh; width: 100vw">
-	<div style="padding: 1rem 0.5rem 1rem 1rem; overflow: auto; min-width: 25vw; display: flex; flex-direction: column; height: 100%;">
-		<div style="flex: 0 0 auto; max-width: 25vw;">
+	<div style="padding: 1rem calc(0.5rem + 2px) 1rem 1rem; overflow: auto; width: 25vw; min-width: 25vw; max-width: 90vw; resize: horizontal; display: flex; flex-direction: column; height: 100%; contain: layout; border-right: 0.5px solid;">
+		<div>
 			<h2>SVG to PNG Converter</h2>
 			<p>All processing is local; please “view source” to see.</p>
 		</div>
 
-		<div style="flex: 1 1 auto; min-height: 0;">
-			<textarea id="svgxml"
-				style="width: 100%; height: 100%; min-width: 25vw; max-width: 90vw; font-family: monospace; font-size: smaller; resize: horizontal;"
-				placeholder="Drop or Paste SVG"
-				title="Drop or paste SVG XML or an image URL in this box."
-				autocorrect="false"
-				spellcheck="false"
-				draggable="true"
-				ondrop="onDrop(event)"
-				oninput="onText()"></textarea>
-		</div>
+		<textarea id="svgxml"
+			style="width: 100%; flex: 1; min-height: 2rem; font-family: monospace; font-size: smaller; resize: none;"
+			placeholder="Drop or Paste SVG"
+			title="Drop or paste SVG XML or an image URL in this box."
+			autocorrect="false"
+			spellcheck="false"
+			draggable="true"
+			ondrop="onDrop(event)"
+			oninput="onText()"></textarea>
 	
-		<div style="padding-top: 0.25rem; flex: 0 0 auto;">
+		<div style="padding-top: 0.25rem;">
 			<label for="oversample" title>Oversample:</label>
 			<select oninput="onImageLoaded()" id="oversample" title="Scale the natural dimensions of the image by this much when rasterizing.">
 				<option>0.125</option>
@@ -122,12 +121,16 @@ html, body {
 			|
 			<a download id="download" class="hide-no-link" title="Save the rasterized image as a PNG.">Save PNG</a>
 
-			<footer style="margin-top: 1rem;"><a href="https://github.com/zenomt/svg2png">This project on GitHub</a></footer>
+			<footer style="margin-top: 1rem;">
+				<a href="https://github.com/zenomt/svg2png">This project is on GitHub</a>
+			</footer>
 		</div>
+
+		<span title="This panel is resizable." style="position: absolute; inset-block-end: 1rem; inset-inline-end: 0; font-size: x-large;">⇄</span>
 	</div>
 
-	<div style="flex: 2; padding: 1rem 1rem 1rem 0.5rem; overflow: auto;">
-		<div style="display: flex; justify-content: center; align-items: center; contain: layout; width: 100%; height: 100%;">
+	<div style="flex: 1; padding: 1rem 1rem 1rem 0.5rem; overflow: auto;">
+		<div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
 			<canvas id="canvas" style="width: 100%; height: 100%; object-fit: contain;" title="The rasterized image."></canvas>
 		</div>
 	</div>
